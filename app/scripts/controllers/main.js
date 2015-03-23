@@ -1,12 +1,6 @@
 angular.module('movieFinderApp')
   .controller('MainCtrl', function ($scope, $location, omdbApiService) {
 
-    $scope.awesomeMovies = [
-      'Looper',
-      'Hackers',
-      'The Internet\'s Own Boy'
-    ];
-
     $scope.search = function(title) {
       omdbApiService.getMovieByTitle(title).
         then(
@@ -18,5 +12,7 @@ angular.module('movieFinderApp')
           }
         );
     }
+
+    $scope.awesomeMovies = omdbApiService.fetch(3)
 
   });
