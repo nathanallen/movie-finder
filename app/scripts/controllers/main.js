@@ -1,5 +1,5 @@
 angular.module('movieFinderApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, OmdbApiService) {
     $scope.awesomeMovies = [
       'Looper',
       'Hackers',
