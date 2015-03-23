@@ -99,7 +99,7 @@ angular.module('movieFinderApp')
         }
       );
 
-      return movie.$promise;
+      return movie
     };
 
     service.getMovieById = function(id) {
@@ -113,7 +113,7 @@ angular.module('movieFinderApp')
         }
       );
 
-      return movie.$promise;
+      return movie
     };
 
     return service;

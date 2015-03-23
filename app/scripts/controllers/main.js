@@ -1,9 +1,11 @@
 angular.module('movieFinderApp')
   .controller('MainCtrl', function ($scope, $location, omdbApiService) {
 
+    $scope.awesomeMovies = omdbApiService.fetch(3);
+
     $scope.search = function(title) {
       omdbApiService.getMovieByTitle(title).
-        then(
+        $promise.then(
           function(movieData) {
             $location.url('/movie/' + movieData['imdbID'])
           },
@@ -11,8 +13,6 @@ angular.module('movieFinderApp')
             alert('Nothing found')
           }
         );
-    }
-
-    $scope.awesomeMovies = omdbApiService.fetch(3)
+    };
 
   });
