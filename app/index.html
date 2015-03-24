@@ -6,15 +6,19 @@
   <title>Movie Finder</title>
 
   <!-- Bower Components -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
   <script src="../bower_components/angular/angular.min.js"></script>
   <script src="../bower_components/angular-route/angular-route.min.js"></script>
   <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="../bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
   <script src="../bower_components/underscore/underscore-min.js"></script>
+  <script src="../bower_components/foundation/js/foundation.js"></script>
   <!-- end Bower Components -->
 
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
 
   <!-- App -->
   <script src="scripts/app.js"></script>
@@ -28,27 +32,28 @@
 
 </head>
 <body ng-app='movieFinderApp'>
+  <div class="row">
+    <div class="small-12 medium-6 large-4 columns">
 
-  <div ng-controller="MainCtrl" class="container-fluid">
-    <!-- <form ng-keyup="autocomplete(title)"> -->
-    <form ng-submit="goToSearchResult(selected)">
-        <input  type="text"
-                ng-model="selected"
-                placeholder="Search Movies"
-                typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
-                typeahead-on-select="goTo(selected)"
-                typeahead-focus-first="false"
-                typeahead-loading="loadingLocations"
-                class="form-control"
-                ng-class="{error: errors}"
-        >
-        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-    </form>
-    <h1 ng-repeat="suggestion in autocomplete_suggestions">{{suggestion.Title}}</h1>
+      <div ng-controller="MainCtrl">
+        <form ng-submit="goToSearchResult(selected)">
+            <input  type="text"
+                    ng-model="selected"
+                    placeholder="Search Movies"
+                    typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
+                    typeahead-on-select="goTo(selected)"
+                    typeahead-focus-first="false"
+                    typeahead-loading="loadingLocations"
+                    class="form-control"
+                    ng-class="{error: errors}"
+            >
+        </form>
+      </div>
+
+      <div ng-view></div>
+
+    </div>
   </div>
-
-
-  <div ng-view></div>
 
 </body>
 </html>
