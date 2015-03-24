@@ -1,3 +1,21 @@
-<p ng-repeat="movie in awesomeMovies">
-  <a ng-href="#movie/{{movie.imdbID}}">{{movie.Title}}</a>
-</p>
+<div ng-repeat="movie in awesomeMovies" class="small-12 medium-6 large-4 columns">
+
+  <!-- begin movie.html -->
+  <article class="movie-card" ng-if="movie">
+    <img ng-src="{{movie.Poster}}">
+    <div class="card-content">
+      <span class="movie-rating" ng-cloak>{{movie.imdbRating*10}}%</span>
+      <p class="movie-genre"><small class="right">{{movie.Genre}}</small></p>
+      <h4>{{movie.Title}} <small>{{movie.Year}}</small></h4>
+      <p>{{movie.Plot}}</p>
+      <ul class="no-bullet">
+        <a href="#" class="right"><i class="fi-share"></i></a>
+        <a href="#" class="right"><i class="fi-heart"></i></a>
+        <li><a href="#">{{movie.Director}}</a></li>
+        <li ng-repeat="actor in movie.Actors.split(',')" href="#"><a href="#">{{actor}}</a></li>
+      </ul>
+    </div>
+  </article>
+  <!-- end movie.html -->
+
+</div>

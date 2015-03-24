@@ -33,6 +33,13 @@ angular.module('movieFinderApp')
     
     $scope.autocomplete = _.debounce($scope.search, 300);
 
+    $scope.goTo = function(movieData){
+      $scope.autocomplete_suggestions = [];
+      $scope.search_results = {};
+      $scope.errors = false;
+      $location.url('/movie/' + movieData['imdbID']);
+    };
+
     $scope.goToSearchResult = function (title) {
       var movie = omdbApiService.getMovieByTitle(title);
       movie.$promise.then(
@@ -42,13 +49,6 @@ angular.module('movieFinderApp')
         }
       );
     }
-
-    $scope.goTo = function(movieData){
-      $scope.autocomplete_suggestions = [];
-      $scope.search_results = {};
-      $scope.errors = false;
-      $location.url('/movie/' + movieData['imdbID']);
-    };
 
     // TEMP STUBBED MOVIE DATA
 
@@ -72,28 +72,6 @@ angular.module('movieFinderApp')
           "imdbRating": "7.5",
           "imdbVotes": "364,154",
           "imdbID": "tt1276104",
-          "Type": "movie",
-          "Response": "True"
-        },
-        "tt0113243": {
-          "Title": "Hackers",
-          "Year": "1995",
-          "Rated": "PG-13",
-          "Released": "1995-09-15",
-          "Runtime": "107 min",
-          "Genre": "Comedy, Crime, Drama",
-          "Director": "Iain Softley",
-          "Writer": "Rafael Moreu",
-          "Actors": "Jonny Lee Miller, Angelina Jolie, Jesse Bradford, Matthew Lillard",
-          "Plot": "A young boy is arrested by the U.S. Secret Service for writing a computer virus and is banned from using a computer until his 18th birthday. Years later, he and his new-found friends ...",
-          "Language": "English, Italian, Japanese, Russian",
-          "Country": "USA",
-          "Awards": "N/A",
-          "Poster": "http://ia.media-imdb.com/images/M/MV5BODg0NjQ5ODQ3OF5BMl5BanBnXkFtZTcwNjU4MjkzNA@@._V1_SX300.jpg",
-          "Metascore": "46",
-          "imdbRating": "6.2",
-          "imdbVotes": "48,945",
-          "imdbID": "tt0113243",
           "Type": "movie",
           "Response": "True"
         },
