@@ -31,26 +31,31 @@
 
 </head>
 <body ng-app='movieFinderApp'>
+  <div class="row">
+    <div class="small-12 medium-8 large-6 columns">
 
-  <div ng-controller="MainCtrl" class="container-fluid">
-    <!-- <form ng-keyup="autocomplete(title)"> -->
-    <form ng-submit="goToSearchResult(selected)">
-        <input  type="text"
-                ng-model="selected"
-                placeholder="Search Movies"
-                typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
-                typeahead-on-select="goTo(selected)"
-                typeahead-focus-first="false"
-                typeahead-loading="loadingLocations"
-                class="form-control"
-                ng-class="{error: errors}"
-        >
-        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-    </form>
+      <div ng-controller="MainCtrl" class="container-fluid">
+        <!-- <form ng-keyup="autocomplete(title)"> -->
+        <form ng-submit="goToSearchResult(selected)">
+            <input  type="text"
+                    ng-model="selected"
+                    placeholder="Search Movies"
+                    typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
+                    typeahead-on-select="goTo(selected)"
+                    typeahead-focus-first="false"
+                    typeahead-loading="loadingLocations"
+                    class="form-control"
+                    ng-class="{error: errors}"
+            >
+            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        </form>
+      </div>
+
+
+      <div ng-view></div>
+
+    </div>
   </div>
-
-
-  <div ng-view></div>
 
 </body>
 </html>
