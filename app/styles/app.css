@@ -9,23 +9,23 @@ body {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(233, 102, 102, 0.6);
 }
 
-.article-card {
+.movie-card {
  border: 1px solid #d7d7d7;
  margin-bottom: 1.5rem;
  box-shadow: 2px 4px 5px 0px #d7d7d7; }
-.article-card img {
+.movie-card img {
   width: 100%;
 }
-.article-card .card-content {
+.movie-card .card-content {
    background: #fff;
    margin: 1.25rem; }
-.article-card .card-content .post-author {
+.movie-card .card-content .movie-author {
  text-align: center; }
-.article-card .card-content h4 {
+.movie-card .card-content h4 {
  color: #CF000F; }
-.article-card .card-content p {
+.movie-card .card-content p {
  color: #757D75; }
-.article-card .card-content a i {
+.movie-card .card-content a i {
  font-weight: 300;
  color: #757D75;
  margin: 0 .5rem;
@@ -33,7 +33,7 @@ body {
  border: 1px solid #757D75;
  border-radius: 50%; }
 
-.post-icon {
+.movie-rating {
   background: #ADD8E6;
   position: absolute;
   width: 3rem;
@@ -43,4 +43,5 @@ body {
   text-align: center;
   padding-top: 0.85rem;
   font-weight: bold;
-  font-size: .95rem; }
+  font-size: .95rem;
+}

@@ -1,10 +1,10 @@
 <!-- <div class="row">
   <div class="small-12 medium-6 large-4 columns"> -->
-    <article class="article-card">
+    <article class="movie-card">
       <img ng-src="{{movie.Poster}}">
       <div class="card-content">
-        <span class="post-icon">{{movie.imdbRating}}/10</span>
-        <p class="post-author">Director: <a href="#">{{movie.Director}}</a></p>
+        <span class="movie-rating">{{movie.imdbRating*10}}%</span>
+        <p class="movie-director">Director: <a href="#">{{movie.Director}}</a></p>
         <h4>{{movie.Title}}</h4>
         <p>{{movie.Plot}}</p>
         <p ng-repeat="actor in movie.Actors.split(',')">
