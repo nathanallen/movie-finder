@@ -9,8 +9,12 @@
   <script src="../bower_components/angular/angular.min.js"></script>
   <script src="../bower_components/angular-route/angular-route.min.js"></script>
   <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
   <script src="../bower_components/underscore/underscore-min.js"></script>
   <!-- end Bower Components -->
+
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   <!-- App -->
   <script src="scripts/app.js"></script>
@@ -25,11 +29,24 @@
 </head>
 <body ng-app='movieFinderApp'>
 
-  <nav ng-controller="MainCtrl">
-    <form ng-submit="search(title)">
-      <input type="text" placeholder="Search Movies" ng-model="title" />
+  <div ng-controller="MainCtrl" class="container-fluid">
+    <!-- <form ng-keyup="autocomplete(title)"> -->
+    <form ng-submit="goToSearchResult(selected)">
+        <input  type="text"
+                ng-model="selected"
+                placeholder="Search Movies"
+                typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
+                typeahead-on-select="goTo(selected)"
+                typeahead-focus-first="false"
+                typeahead-loading="loadingLocations"
+                class="form-control"
+                ng-class="{error: errors}"
+        >
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
     </form>
-  </nav>
+    <h1 ng-repeat="suggestion in autocomplete_suggestions">{{suggestion.Title}}</h1>
+  </div>
+
 
   <div ng-view></div>
 

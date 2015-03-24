@@ -93,18 +93,74 @@ angular.module('movieFinderApp')
         }
     };
 
+    // $scope.selected = undefined;
+    // Any function returning a promise object can be used to load values asynchronously
+    // $scope.getLocation = function(title) {
+    //   omdbApiService.getMovieByTitle(title).
+    //     $promise.then(function(response){
+    //       if (response && response.Title !== undefined) {
+    //         $scope.autocomplete_suggestions.unshift(response.Title)
+    //       }
+    //   });
+    //   return $scope.autocomplete_suggestions
+    // };
+
     $scope.awesomeMovies = stubbed_movies;
 
+    $scope.autocomplete_suggestions = [];
+    $scope.search_results = {};
+
     $scope.search = function(title) {
-      omdbApiService.getMovieByTitle(title).
-        $promise.then(
+      $scope.errors = false;
+
+      if (title.length < 4) {
+        $scope.autocomplete_suggestions = [];
+        $scope.search_results = {};
+        return $scope.autocomplete_suggestions
+      }
+
+      console.log('searching', title)
+      // if (typeof(title) === "object"){debugger}
+      // if ($scope.selected && $scope.selected.title === title ) { console.log("yup"); return false; }
+
+      return omdbApiService.getMovieByTitle(title).$promise.then(
           function(movieData) {
-            $location.url('/movie/' + movieData['imdbID'])
+            if (movieData['imdbID'] === undefined) {
+              $scope.errors = true;
+              return $scope.autocomplete_suggestions
+            }
+            if ($scope.search_results[movieData['Title']] === undefined) {
+              $scope.search_results[movieData['Title']] = movieData;
+              $scope.autocomplete_suggestions.unshift(movieData)
+            } 
+            // return _.values($scope.search_results);
+            return $scope.autocomplete_suggestions
           },
           function() {
             alert('Nothing found')
-          }
+          } 
         );
     };
+
+    $scope.goToSearchResult = function (title) {
+      var movie = omdbApiService.getMovieByTitle(title);
+      movie.$promise.then(
+        function(movieData){
+          if (movieData['imdbID'] === undefined) { return false; }
+          $scope.goTo(movieData)
+        }
+      );
+    }
+
+    $scope.goTo = function(movieData){
+      console.log('goTo', movieData)
+      // $scope.selected = movieData;
+      $scope.autocomplete_suggestions = [];
+      $scope.search_results = {};
+      $scope.errors = false;
+      $location.url('/movie/' + movieData['imdbID'])
+    }
+
+    $scope.autocomplete = _.debounce($scope.search, 300)
 
   });
