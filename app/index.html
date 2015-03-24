@@ -32,21 +32,7 @@
   <div class="row">
     <div class="small-12 medium-6 large-4 columns">
 
-      <div ng-controller="MainCtrl">
-        <form ng-submit="goToSearchResult(selected)">
-            <input  type="text"
-                    ng-model="selected"
-                    placeholder="Search Movies"
-                    typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
-                    typeahead-on-select="goTo(selected)"
-                    typeahead-focus-first="false"
-                    typeahead-loading="loadingLocations"
-                    class="form-control"
-                    ng-class="{error: errors}"
-            >
-        </form>
-      </div>
-
+      <div ng-include="'views/search_bar.html'"></div>
       <div ng-view></div>
 
     </div>
