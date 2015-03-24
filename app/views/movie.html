@@ -3,7 +3,7 @@
     <article class="movie-card">
       <img ng-src="{{movie.Poster}}">
       <div class="card-content">
-        <span class="movie-rating">{{movie.imdbRating*10}}%</span>
+        <span class="movie-rating" ng-cloak>{{movie.imdbRating*10}}%</span>
         <p class="movie-director">Director: <a href="#">{{movie.Director}}</a></p>
         <h4>{{movie.Title}}</h4>
         <p>{{movie.Plot}}</p>
