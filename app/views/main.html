@@ -1,4 +1,6 @@
 <form ng-submit="search(title)">
   <input type="text" placeholder="Search Movies" ng-model="title" />
 </form>
-<p ng-repeat="movie in awesomeMovies">{{movie.Title}}</p>
+<p ng-repeat="movie in awesomeMovies">
+  <a ng-href="#movie/{{movie.imdbID}}">{{movie.Title}}</a>
+</p>
