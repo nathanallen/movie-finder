@@ -33,10 +33,9 @@
 </head>
 <body ng-app='movieFinderApp'>
   <div class="row">
-    <div class="small-12 medium-8 large-6 columns">
+    <div class="small-12 medium-6 large-4 columns">
 
-      <div ng-controller="MainCtrl" class="container-fluid">
-        <!-- <form ng-keyup="autocomplete(title)"> -->
+      <div ng-controller="MainCtrl">
         <form ng-submit="goToSearchResult(selected)">
             <input  type="text"
                     ng-model="selected"
@@ -48,10 +47,8 @@
                     class="form-control"
                     ng-class="{error: errors}"
             >
-            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
         </form>
       </div>
-
 
       <div ng-view></div>
 
