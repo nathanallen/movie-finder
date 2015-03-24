@@ -17,27 +17,40 @@ body {
  border: 1px solid #d7d7d7;
  margin-bottom: 1.5rem;
  box-shadow: 2px 4px 5px 0px #d7d7d7; }
+
 .movie-card img {
   width: 100%;
 }
-.movie-card .card-content {
-   background: #fff;
-   margin: 1.25rem; }
-.movie-card .card-content .movie-author {
- text-align: center; }
-.movie-card .card-content h4 {
- color: #CF000F; }
-.movie-card .card-content p {
- color: #757D75; }
-.movie-card .card-content a i {
- font-weight: 300;
- color: #757D75;
- margin: 0 .5rem;
- padding: 5px 7px 5px 7px;
- border: 1px solid #757D75;
- border-radius: 50%; }
 
-.movie-rating {
+.movie-card .card-content {
+  background: #fff;
+  margin: 1.25rem;
+}
+
+.movie-card .card-content h4 {
+  padding-top: 0.5rem;
+  color: #CF000F;
+}
+
+.movie-card .card-content h4 small {
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.movie-card .card-content p {
+  color: #757D75;
+}
+
+.movie-card .card-content a i {
+  font-weight: 300;
+  color: #757D75;
+  margin: 0 .5rem;
+  padding: 5px 7px 5px 7px;
+  border: 1px solid #757D75;
+  border-radius: 50%;
+}
+
+.movie-card .card-content .movie-rating {
   background: #ADD8E6;
   position: absolute;
   width: 3rem;
