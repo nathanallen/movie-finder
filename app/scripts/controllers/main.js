@@ -1,5 +1,5 @@
 angular.module('movieFinderApp')
-  .controller('MainCtrl', function ($scope, $location, omdbApiService) {
+  .controller('MainCtrl', function ($scope, $location, $compile, omdbApiService) {
 
 
     var stubbed_movies = {
@@ -93,18 +93,75 @@ angular.module('movieFinderApp')
         }
     };
 
+
+    /* autcomplete config object */
+    $scope.myOption = {
+        options: {
+            html: true,
+            focusOpen: true,
+            onlySelectValid: true,
+            source: function (request, response) {
+                var data = [
+                        "Asp",
+                        "BASIC",
+                        "C",
+                        "C++",
+                        "Clojure",
+                        "COBOL",
+                        "ColdFusion",
+                        "Erlang",
+                        "Fortran",
+                        "Groovy",
+                        "Haskell",
+                        "Java",
+                        "JavaScript",
+                        "Lisp",
+                        "Perl",
+                        "PHP",
+                        "Python",
+                        "Ruby",
+                        "Scala",
+                        "Scheme"
+                ];
+                data = $scope.myOption.methods.filter(data, request.term);
+
+                if (!data.length) {
+                    data.push({
+                        label: 'not found',
+                        value: ''
+                    });
+                }
+                // add "Add Language" button to autocomplete menu bottom
+                data.push({
+                    label: $compile('<a class="btn btn-link ui-menu-add" ng-click="addLanguage()">Add Language</a>')($scope),
+                    value: ''
+                });
+                response(data);
+            }
+        },
+        methods: {}
+    };
+
+
     $scope.awesomeMovies = stubbed_movies;
+
+    $scope.autocomplete_suggestions = [];
 
     $scope.search = function(title) {
       omdbApiService.getMovieByTitle(title).
         $promise.then(
           function(movieData) {
+            if (movieData['imdbID'] === undefined) { return false; }
             $location.url('/movie/' + movieData['imdbID'])
+            // $scope.autocomplete_suggestions.push(movieData)
+            // console.log(movieData.Title)
           },
           function() {
             alert('Nothing found')
           }
         );
     };
+
+    $scope.autocomplete = _.throttle($scope.search, 800, {leading: false})
 
   });

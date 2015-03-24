@@ -6,9 +6,12 @@
   <title>Movie Finder</title>
 
   <!-- Bower Components -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="../bower_components/angular/angular.min.js"></script>
   <script src="../bower_components/angular-route/angular-route.min.js"></script>
   <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="../bower_components/ui-autocomplete/autocomplete.js"></script>
   <script src="../bower_components/underscore/underscore-min.js"></script>
   <!-- end Bower Components -->
 
@@ -26,9 +29,10 @@
 <body ng-app='movieFinderApp'>
 
   <nav ng-controller="MainCtrl">
-    <form ng-submit="search(title)">
-      <input type="text" placeholder="Search Movies" ng-model="title" />
-    </form>
+    <!-- <form ng-submit="search(title)" ng-keyup="autocomplete(title)"> -->
+    <!-- <form> -->
+      <input type="text" placeholder="Search Movies" ng-model="title" ui-autocomplete="myOption" />
+    <!-- </form> -->
   </nav>
 
   <div ng-view></div>
