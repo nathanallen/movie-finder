@@ -138,9 +138,19 @@ angular.module('movieFinderApp')
           },
           function() {
             alert('Nothing found')
-          }
+          } 
         );
     };
+
+    $scope.goToSearchResult = function (title) {
+      var movie = omdbApiService.getMovieByTitle(title);
+      movie.$promise.then(
+        function(movieData){
+          if (movieData['imdbID'] === undefined) { return false; }
+          $scope.goTo(movieData)
+        }
+      );
+    }
 
     $scope.goTo = function(movieData){
       console.log('goTo', movieData)
