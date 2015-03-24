@@ -36,7 +36,6 @@
                 ng-model="selected"
                 placeholder="Search Movies"
                 typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | limitTo:8"
-                typeahead-min-length="4"
                 typeahead-on-select="goTo(selected)"
                 typeahead-loading="loadingLocations"
                 class="form-control"

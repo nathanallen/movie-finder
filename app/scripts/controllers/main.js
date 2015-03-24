@@ -93,7 +93,7 @@ angular.module('movieFinderApp')
         }
     };
 
-    $scope.selected = undefined;
+    // $scope.selected = undefined;
     // Any function returning a promise object can be used to load values asynchronously
     // $scope.getLocation = function(title) {
     //   omdbApiService.getMovieByTitle(title).
@@ -112,9 +112,16 @@ angular.module('movieFinderApp')
 
     $scope.search = function(title) {
       $scope.errors = false;
+
+      if (title.length < 4) {
+        $scope.autocomplete_suggestions = [];
+        $scope.search_results = {};
+        return $scope.autocomplete_suggestions
+      }
+
       console.log('searching', title)
-      if (typeof(title) === "object"){debugger}
-      if ($scope.selected && $scope.selected.title === title ) { return false; }
+      // if (typeof(title) === "object"){debugger}
+      // if ($scope.selected && $scope.selected.title === title ) { console.log("yup"); return false; }
 
       return omdbApiService.getMovieByTitle(title).$promise.then(
           function(movieData) {
@@ -137,9 +144,10 @@ angular.module('movieFinderApp')
 
     $scope.goTo = function(movieData){
       console.log('goTo', movieData)
-      $scope.selected = movieData;
+      // $scope.selected = movieData;
       $scope.autocomplete_suggestions = [];
       $scope.search_results = {};
+      $scope.errors = false;
       $location.url('/movie/' + movieData['imdbID'])
     }
 
