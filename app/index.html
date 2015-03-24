@@ -6,14 +6,15 @@
   <title>Movie Finder</title>
 
   <!-- Bower Components -->
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="../bower_components/angular/angular.min.js"></script>
   <script src="../bower_components/angular-route/angular-route.min.js"></script>
   <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
-  <script src="../bower_components/ui-autocomplete/autocomplete.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../bower_components/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>
   <script src="../bower_components/underscore/underscore-min.js"></script>
   <!-- end Bower Components -->
+
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   <!-- App -->
   <script src="scripts/app.js"></script>
@@ -28,12 +29,20 @@
 </head>
 <body ng-app='movieFinderApp'>
 
-  <nav ng-controller="MainCtrl">
-    <!-- <form ng-submit="search(title)" ng-keyup="autocomplete(title)"> -->
-    <!-- <form> -->
-      <input type="text" placeholder="Search Movies" ng-model="title" ui-autocomplete="myOption" />
-    <!-- </form> -->
-  </nav>
+  <div ng-controller="MainCtrl" class="container-fluid">
+    <!-- <form ng-keyup="autocomplete(title)"> -->
+    <form>
+        <input  type="text"
+                ng-model="$viewValue"
+                placeholder="Search Movies"
+                typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | filter:$viewValue | limitTo:8"
+                typeahead-on-select="goTo($viewValue)"
+                typeahead-loading="loadingLocations"
+                class="form-control"
+        >
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    </form>
+  </div>
 
   <div ng-view></div>
 

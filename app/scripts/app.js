@@ -4,7 +4,7 @@ angular
   .module('movieFinderApp', [
     'ngResource',
     'ngRoute',
-    'ui.autocomplete'
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
