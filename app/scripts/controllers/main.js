@@ -107,10 +107,11 @@ angular.module('movieFinderApp')
 
     $scope.awesomeMovies = stubbed_movies;
 
-    // $scope.autocomplete_suggestions = [];
-    $scope.autocomplete_suggestions = {};
+    $scope.autocomplete_suggestions = [];
+    $scope.search_results = {};
 
     $scope.search = function(title) {
+      $scope.errors = false;
       console.log('searching', title)
       if (typeof(title) === "object"){debugger}
       if ($scope.selected && $scope.selected.title === title ) { return false; }
@@ -118,17 +119,19 @@ angular.module('movieFinderApp')
       omdbApiService.getMovieByTitle(title).
         $promise.then(
           function(movieData) {
-            if (movieData['imdbID'] === undefined) { return false; }
-            // $location.url('/movie/' + movieData['imdbID'])
-            // $scope.autocomplete_suggestions.unshift(movieData)
-            $scope.autocomplete_suggestions[movieData['Title']] = movieData
-            // console.log(movieData.Title)
+            if (movieData['imdbID'] === undefined) {
+              $scope.errors = true;
+              return false;
+            }
+            if ($scope.search_results[movieData['Title']]) { return false; } 
+            $scope.search_results[movieData['Title']] = movieData;
+            autocomplete_suggestions.push(movieData)
           },
           function() {
             alert('Nothing found')
           }
         );
-      return _.values($scope.autocomplete_suggestions);
+      return _.values($scope.search_results);
     };
 
     $scope.goTo = function(movieData){

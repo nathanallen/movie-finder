@@ -33,16 +33,20 @@
     <!-- <form ng-keyup="autocomplete(title)"> -->
     <form>
         <input  type="text"
-                ng-model="$viewValue"
+                ng-model="title"
                 placeholder="Search Movies"
-                typeahead="movieData as movieData.Title for movieData in autocomplete($viewValue) | filter:$viewValue | limitTo:8"
+                typeahead="movieData as movieData.Title for movieData in autocomplete(title) | limitTo:8"
+                typeahead-min-length="4"
                 typeahead-on-select="goTo($viewValue)"
                 typeahead-loading="loadingLocations"
                 class="form-control"
+                ng-class="{error: errors}"
         >
         <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
     </form>
+    <h1 ng-repeat="suggestion in autocomplete_suggestions">{{suggestion.Title}}</h1>
   </div>
+
 
   <div ng-view></div>
 
