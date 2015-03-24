@@ -1,10 +1,12 @@
 angular movie finder
 ====================
 
-In development, make sure to run bower, then a local server.
+####Development
+Make sure to run bower, then a local server.
 
-Home: [/app/#/](/app/#/)
-Individual Movies: [/app/#/movie/:id](/app/#/movie/tt3268458)
+####Routes
+* Home: [/app/#/](/app/#/)
+* Individual Movies: [/app/#/movie/:id](/app/#/movie/tt3268458)
 
 ####Features
 * OMDB Api
