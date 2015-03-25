@@ -53,27 +53,27 @@ angular.module('movieFinderApp')
     // TEMP STUBBED MOVIE DATA
 
     var stubbed_movies = {
-        "tt1276104": {
-          "Title": "Looper",
-          "Year": "2012",
-          "Rated": "R",
-          "Released": "2012-09-28",
-          "Runtime": "119 min",
-          "Genre": "Action, Crime, Sci-Fi",
-          "Director": "Rian Johnson",
-          "Writer": "Rian Johnson",
-          "Actors": "Joseph Gordon-Levitt, Bruce Willis, Emily Blunt, Paul Dano",
-          "Plot": "In 2074, when the mob wants to get rid of someone, the target is sent into the past, where a hired gun awaits - someone like Joe - who one day learns the mob wants to 'close the loop' by sending back Joe's future self for assassination.",
-          "Language": "English, French",
-          "Country": "USA, China",
-          "Awards": "14 wins & 35 nominations.",
-          "Poster": "http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SX300.jpg",
-          "Metascore": "84",
-          "imdbRating": "7.5",
-          "imdbVotes": "364,154",
-          "imdbID": "tt1276104",
-          "Type": "movie",
-          "Response": "True"
+        "tt0390384": {
+            "Title": "Primer",
+            "Year": "2004",
+            "Rated": "PG-13",
+            "Released": "2005-05-27",
+            "Runtime": "77 min",
+            "Genre": "Drama, Thriller, Sci-Fi",
+            "Director": "Shane Carruth",
+            "Writer": "Shane Carruth",
+            "Actors": "Shane Carruth, David Sullivan, Casey Gooden, Anand Upadhyaya",
+            "Plot": "Four friends/fledgling entrepreneurs, knowing that there's something bigger and more innovative than the different error-checking devices they've built, wrestle over their new invention.",
+            "Language": "English",
+            "Country": "USA",
+            "Awards": "2 wins & 7 nominations.",
+            "Poster": "http://ia.media-imdb.com/images/M/MV5BMTgwNjY5MDkzOF5BMl5BanBnXkFtZTcwOTAxMTcyMQ@@._V1_SX300.jpg",
+            "Metascore": "68",
+            "imdbRating": "7.0",
+            "imdbVotes": "56,849",
+            "imdbID": "tt0390384",
+            "Type": "movie",
+            "Response": "True"
         },
         "tt3268458": {
             "Title": "The Internet's Own Boy: The Story of Aaron Swartz",
